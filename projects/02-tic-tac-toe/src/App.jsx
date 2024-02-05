@@ -3,8 +3,8 @@ import confetti from 'canvas-confetti'
 
 import { Square } from './components/Square'
 import { TURNS } from './constants'
-import { checkWinner } from './logic/board'
-import { WinnerModal } from './components/WinnerModal'
+import { checkWinnerFrom } from './logic/board'
+import { WinnerModal } from './components/WinnerModal.jsx'
 
 function App() {
   const [board, setBoard] = useState(
@@ -35,7 +35,7 @@ function App() {
     const newTurn = turn === TURNS.x ? TURNS.o : TURNS.x
     setTurn(newTurn)
 
-    const newWinner = checkWinner(newBoard)
+    const newWinner = checkWinnerFrom(newBoard)
     if (newWinner) {
       confetti()
       setWinner(newWinner)
@@ -72,8 +72,7 @@ function App() {
           {TURNS.o}
         </Square>
       </section>
-
-      <WinnerModal winner={winner} />
+      <WinnerModal winner={winner} resetGame={resetGame} />
     </main>
 
   )

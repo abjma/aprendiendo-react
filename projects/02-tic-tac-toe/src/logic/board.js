@@ -1,6 +1,6 @@
 import { WINNER_COMBOS } from "../constants";
 
-export const checkWinner = (boardToCheck) => {
+export const checkWinnerFrom = (boardToCheck) => {
   for (const combo of WINNER_COMBOS) {
     const [a, b, c] = combo;
     if (
@@ -11,5 +11,6 @@ export const checkWinner = (boardToCheck) => {
       return boardToCheck[a];
     }
   }
+
   return null;
 };
